@@ -1,5 +1,5 @@
 {
-  "name": "@raff/code-reviewer",
+  "name": "@raff_mendes/code-reviewer",
   "version": "1.0.0",
   "description": "AI powered code reviewing",
   "main": "index.js",
@@ -7,13 +7,22 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "my-library": "./index.js"
+    "my-library": "index.js"
   },
-  "author": "",
+  "author": "Raff",
   "license": "ISC",
   "dependencies": {
     "@whatwg-node/fetch": "^0.9.9",
     "chalk": "^2.4.2",
     "inquirer": "^7.3.3"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/designedhead/code-reviewer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/designedhead/code-reviewer/issues"
+  },
+  "homepage": "https://github.com/designedhead/code-reviewer#readme"
 }
