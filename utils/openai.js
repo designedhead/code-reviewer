@@ -1,23 +1,5 @@
 const { fetch } = require("@whatwg-node/fetch");
-const path = require("path");
-const fs = require("fs");
-
-const credentialsFile = "../code-review-config.json";
-
-function loadCredentials() {
-  try {
-    const fullPath = path.join(__dirname, credentialsFile);
-    if (fs.existsSync(fullPath)) {
-      return require(fullPath);
-    } else {
-      console.error(`Config file missing, please try again.`);
-      return null;
-    }
-  } catch (error) {
-    console.error("Error loading config file.", error);
-    return null;
-  }
-}
+const loadCredentials = require("./loadCredentials");
 
 async function fetchOpenAi(content) {
   try {
