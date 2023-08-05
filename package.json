@@ -1,0 +1,19 @@
+{
+  "name": "@raff/code-reviewer",
+  "version": "1.0.0",
+  "description": "AI powered code reviewing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "my-library": "./index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@whatwg-node/fetch": "^0.9.9",
+    "chalk": "^2.4.2",
+    "inquirer": "^7.3.3"
+  }
+}
