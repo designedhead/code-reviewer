@@ -6,7 +6,7 @@ async function fetchOpenAi(content) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${credentials.api_key}}`,
+      Authorization: `Bearer ${credentials.api_key}`,
     },
     body: JSON.stringify({
       model: "gpt-4",
@@ -21,14 +21,18 @@ async function fetchOpenAi(content) {
           content,
         },
       ],
-      max_tokens: 800,
+      max_tokens: 400,
       temperature: 0.5,
     }),
   });
 
   const data = await response.json();
 
-  return data.choices[0]?.message?.content;
+  return (
+    data?.choices[0]?.message?.content ||
+    data?.error?.message ||
+    "Something went wrong..."
+  );
 }
 
 module.exports = fetchOpenAi;
