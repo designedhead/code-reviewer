@@ -27,7 +27,7 @@ async function fetchOpenAi(content) {
             content,
           },
         ],
-        max_tokens: credentials.max_tokens || 500,
+        max_tokens: parseInt(credentials.max_tokens) || 500,
         temperature: 0.5,
       }),
     });

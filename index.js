@@ -27,7 +27,7 @@ const promptUserAndStoreConfig = async () => {
   // Save the answers to the .env file
   fs.writeFileSync(
     ".env",
-    `API_KEY=${answers.api_key}\nMAX_TOKENS=${answers.max_tokens}`
+    `REVIEWER_API_KEY=${answers.api_key}\nREVIEWER_MAX_TOKENS=${answers.max_tokens}`
   );
 
   console.log(chalk.green("Key saved successfully 👍"));
@@ -36,8 +36,8 @@ const promptUserAndStoreConfig = async () => {
 
 // Check if config exists in .env and load it, or prompt the user for config
 const existingConfig = {
-  reviewer_api_key: process.env.API_KEY,
-  reviwer_max_tokens: process.env.MAX_TOKENS,
+  api_key: process.env.REVIEWER_API_KEY,
+  max_tokens: process.env.REVIEWER_MAX_TOKENS,
 };
 
 if (existingConfig.api_key) {
