@@ -4,8 +4,9 @@ const fs = require("fs");
 const inquirer = require("inquirer");
 const chalk = require("chalk");
 const reviewCode = require("./code-review");
+const dotenv = require("dotenv");
 
-const configFilePath = "./config.json";
+dotenv.config(); // Load environment variables from .env
 
 // Function to prompt the user for input and store the value in a config file
 const promptUserAndStoreConfig = async () => {
@@ -15,34 +16,32 @@ const promptUserAndStoreConfig = async () => {
       name: "api_key",
       message: "🤖 Enter your OpenAI api key:",
     },
+    {
+      type: "number",
+      name: "max_tokens",
+      message: "🔢 Enter the max number of tokens to generate:",
+      default: 500,
+    },
   ]);
 
-  // Save the answers to the config file
-  fs.writeFile(configFilePath, JSON.stringify(answers), (err) => {
-    if (err) {
-      console.error(
-        chalk.red("Something went wrong saving the api key.\n\n", err)
-      );
-    } else {
-      console.log(chalk.green("Key saved sucessfully ✓"));
-      reviewCode();
-    }
-  });
+  // Save the answers to the .env file
+  fs.writeFileSync(
+    ".env",
+    `API_KEY=${answers.api_key}\nMAX_TOKENS=${answers.max_tokens}`
+  );
+
+  console.log(chalk.green("Key saved successfully 👍"));
+  reviewCode();
 };
 
-// load the existing configuration from the config file
-const loadExistingConfig = () => {
-  if (fs.existsSync(configFilePath)) {
-    const configData = fs.readFileSync(configFilePath, "utf8");
-    return JSON.parse(configData);
-  }
-  return null;
+// Check if config exists in .env and load it, or prompt the user for config
+const existingConfig = {
+  reviewer_api_key: process.env.API_KEY,
+  reviwer_max_tokens: process.env.MAX_TOKENS,
 };
 
-// Check if config exists and load it, or prompt the user for config
-const existingConfig = loadExistingConfig();
-if (existingConfig && existingConfig.api_key) {
-  console.log("🔑 Using existing configuration from config.json.");
+if (existingConfig.api_key) {
+  console.log("🔑 Using existing configuration from .env.");
   reviewCode();
 } else {
   promptUserAndStoreConfig();

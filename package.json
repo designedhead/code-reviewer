@@ -1,6 +1,6 @@
 {
   "name": "@raff_mendes/code-reviewer",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "AI powered code reviewing",
   "main": "index.js",
   "scripts": {
@@ -14,9 +14,9 @@
   "dependencies": {
     "@whatwg-node/fetch": "^0.9.9",
     "chalk": "^2.4.2",
+    "dotenv": "^16.3.1",
     "inquirer": "^7.3.3"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/designedhead/code-reviewer.git"
