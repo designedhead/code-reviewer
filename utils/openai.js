@@ -1,10 +1,10 @@
 const { fetch } = require("@whatwg-node/fetch");
-const loadCredentials = require("./loadCredentials");
+const loadExistingConfig = require("./loadConfig");
 
 async function fetchOpenAi(content) {
   try {
     // Load credentials each time
-    const credentials = loadCredentials();
+    const credentials = loadExistingConfig();
 
     if (!credentials.api_key) throw new Error("Missing config file");
 

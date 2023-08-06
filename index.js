@@ -4,9 +4,9 @@ const fs = require("fs");
 const inquirer = require("inquirer");
 const chalk = require("chalk");
 const reviewCode = require("./code-review");
-const dotenv = require("dotenv");
+const loadExistingConfig = require("./utils/loadConfig");
 
-dotenv.config(); // Load environment variables from .env
+const configFilePath = "./reviewer_config.json";
 
 // Function to prompt the user for input and store the value in a config file
 const promptUserAndStoreConfig = async () => {
@@ -24,23 +24,26 @@ const promptUserAndStoreConfig = async () => {
     },
   ]);
 
-  // Save the answers to the .env file
-  fs.writeFileSync(
-    ".env",
-    `REVIEWER_API_KEY=${answers.api_key}\nREVIEWER_MAX_TOKENS=${answers.max_tokens}`
-  );
+  // Save the answers to the config file
+  fs.writeFile(configFilePath, JSON.stringify(answers), (err) => {
+    if (err) {
+      console.error(
+        chalk.red("Something went wrong saving the configuration.\n\n", err)
+      );
+    } else {
+      console.log(chalk.green("Key saved sucessfully ✓"));
+      reviewCode();
+    }
+  });
 
   console.log(chalk.green("Key saved successfully 👍"));
   reviewCode();
 };
 
-// Check if config exists in .env and load it, or prompt the user for config
-const existingConfig = {
-  api_key: process.env.REVIEWER_API_KEY,
-  max_tokens: process.env.REVIEWER_MAX_TOKENS,
-};
+// Check if config exists and load it, or prompt the user for config
+const existingConfig = loadExistingConfig();
 
-if (existingConfig.api_key) {
+if (existingConfig?.api_key) {
   console.log("🔑 Using existing configuration from .env.");
   reviewCode();
 } else {

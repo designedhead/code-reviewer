@@ -49,20 +49,18 @@ const getStagedFiles = async () => {
 
     // eslint-disable-next-line no-restricted-syntax
     for (const filePath of stagedFilesArray) {
-      const modifiedFilePath = filePath.replace("app/", "");
-
       // eslint-disable-next-line security/detect-non-literal-fs-filename
-      fs.readFile(modifiedFilePath, "utf8", async (err, content) => {
+      fs.readFile(filePath, "utf8", async (err, content) => {
         if (err) {
-          console.error(`Error reading file: ${modifiedFilePath}`, err);
+          console.error(`Error reading file: ${filePath}`, err);
           return;
         }
 
         const res = await fetchOpenAi(
-          `File path is:${modifiedFilePath}, file content is: ${content}`
+          `File path is:${filePath}, file content is: ${content}`
         );
 
-        console.log(chalk.blue.bgBlack.bold(`File ${modifiedFilePath}:\n`));
+        console.log(chalk.blue.bgBlack.bold(`File ${filePath}:\n`));
         console.log(styleDynamicText(res));
         console.log("\n\n\n");
       });
@@ -72,5 +70,4 @@ const getStagedFiles = async () => {
   }
 };
 
-// getStagedFiles();
 module.exports = getStagedFiles;
