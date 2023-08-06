@@ -10,7 +10,7 @@
     "my-library": "index.js"
   },
   "author": "Raff",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@whatwg-node/fetch": "^0.9.9",
     "chalk": "^2.4.2",
