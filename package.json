@@ -1,6 +1,6 @@
 {
   "name": "@raff_mendes/code-reviewer",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "AI powered code reviewing",
   "main": "index.js",
   "scripts": {
@@ -26,6 +26,13 @@
     "url": "https://github.com/designedhead/code-reviewer/issues"
   },
   "homepage": "https://github.com/designedhead/code-reviewer#readme",
+  "keywords": [
+    "code reviewer",
+    "reviewer",
+    "code",
+    "ai",
+    "open ai"
+  ],
   "devDependencies": {
     "eslint": "^8.46.0",
     "eslint-config-airbnb-base": "^15.0.0",
