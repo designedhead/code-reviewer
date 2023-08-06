@@ -1,6 +1,6 @@
 {
   "name": "@raff_mendes/code-reviewer",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "AI powered code reviewing",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,8 @@
     "@whatwg-node/fetch": "^0.9.9",
     "chalk": "^2.4.2",
     "inquirer": "^7.3.3",
-    "ora": "^5.4.1"
+    "ora": "^5.4.1",
+    "yargs": "^17.7.2"
   },
   "repository": {
     "type": "git",

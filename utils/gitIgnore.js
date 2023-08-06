@@ -1,9 +1,10 @@
 const fs = require("fs").promises;
+const path = require("path");
 const chalk = require("chalk");
 
 // Adds config file to .gitignore
 
-const gitignoreFilePath = "./.gitignore";
+const gitignoreFilePath = path.join(__dirname, ".gitignore");
 
 const checkAndAddToGitignore = async () => {
   try {
