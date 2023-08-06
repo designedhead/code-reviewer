@@ -4,7 +4,7 @@
   "description": "AI powered code reviewing",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format": "prettier --write ."
   },
   "bin": {
     "my-library": "index.js"
@@ -25,5 +25,16 @@
   "bugs": {
     "url": "https://github.com/designedhead/code-reviewer/issues"
   },
-  "homepage": "https://github.com/designedhead/code-reviewer#readme"
+  "homepage": "https://github.com/designedhead/code-reviewer#readme",
+  "devDependencies": {
+    "eslint": "^8.46.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-standard": "^5.0.0",
+    "prettier": "^3.0.1"
+  }
 }
