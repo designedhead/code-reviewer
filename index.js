@@ -31,12 +31,10 @@ const promptUserAndStoreConfig = async () => {
         chalk.red("Something went wrong saving the configuration.\n\n", err)
       );
     } else {
-      console.log(chalk.green("Key saved sucessfully ✓"));
-      reviewCode();
+      console.log(chalk.green("Key saved successfully 👍"));
     }
   });
 
-  console.log(chalk.green("Key saved successfully 👍"));
   reviewCode();
 };
 
