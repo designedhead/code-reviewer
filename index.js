@@ -6,6 +6,7 @@ const chalk = require("chalk");
 const reviewCode = require("./code-review");
 const loadExistingConfig = require("./utils/loadConfig");
 const { validateApiKey } = require("./utils/validation");
+const checkAndAddToGitignore = require("./utils/gitIgnore");
 
 const configFilePath = "./reviewer_config.json";
 
@@ -55,11 +56,12 @@ const promptUserAndStoreConfig = async () => {
     }
   });
 
-  reviewCode();
+  await checkAndAddToGitignore();
+  await reviewCode();
 };
 
 // Check if config exists and load it, or prompt the user for config
-const { api_key, max_tokens, file_types } = loadExistingConfig();
+const { api_key, max_tokens, file_types } = loadExistingConfig() || {};
 
 if (api_key && max_tokens && file_types) {
   console.log("🔑 Using existing configuration from .env.");
