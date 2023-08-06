@@ -11,7 +11,6 @@ const styleDynamicText = require("./utils/styledLogs");
 // Function to execute shell commands
 const execShellCommand = (command) => {
   return new Promise((resolve, reject) => {
-    // eslint-disable-next-line security/detect-child-process
     exec(command, (error, stdout) => {
       if (error) {
         reject(error);
@@ -47,9 +46,7 @@ const getStagedFiles = async () => {
 
     // Read the contents of each staged file
 
-    // eslint-disable-next-line no-restricted-syntax
     for (const filePath of stagedFilesArray) {
-      // eslint-disable-next-line security/detect-non-literal-fs-filename
       fs.readFile(filePath, "utf8", async (err, content) => {
         if (err) {
           console.error(`Error reading file: ${filePath}`, err);
