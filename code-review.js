@@ -8,6 +8,7 @@ const chalk = require("chalk");
 const fetchOpenAi = require("./utils/openai");
 const styleDynamicText = require("./utils/styledLogs");
 const ora = require("ora");
+const loadExistingConfig = require("./utils/loadConfig");
 
 // Function to execute shell commands
 const execShellCommand = (command) => {
@@ -36,16 +37,12 @@ const getStagedFiles = async () => {
       return;
     }
 
+    const { file_types } = loadExistingConfig();
+
     // Split the staged files by space to create an array and filter out non-JS files
     const stagedFilesArray = stagedFiles
       .split(" ")
-      .filter(
-        (path) =>
-          path.endsWith(".js") ||
-          path.endsWith(".jsx") ||
-          path.endsWith(".ts") ||
-          path.endsWith(".tsx")
-      );
+      .filter((path) => file_types.some((ext) => path.endsWith(ext)));
 
     // Use Promise.all to wait for all the file reading operations to complete
     const readPromises = stagedFilesArray.map((filePath) => {

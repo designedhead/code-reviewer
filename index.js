@@ -5,6 +5,7 @@ const inquirer = require("inquirer");
 const chalk = require("chalk");
 const reviewCode = require("./code-review");
 const loadExistingConfig = require("./utils/loadConfig");
+const { validateApiKey } = require("./utils/validation");
 
 const configFilePath = "./reviewer_config.json";
 
@@ -15,12 +16,31 @@ const promptUserAndStoreConfig = async () => {
       type: "input",
       name: "api_key",
       message: "🤖 Enter your OpenAI api key:",
+      validate: validateApiKey,
     },
     {
       type: "number",
       name: "max_tokens",
       message: "🔢 Enter the max number of tokens to generate:",
       default: 500,
+    },
+    {
+      type: "checkbox",
+      name: "file_types",
+      message: "📂 Choose the file types you want to accept:",
+      choices: [
+        { name: ".js" },
+        { name: ".jsx" },
+        { name: ".ts" },
+        { name: ".tsx" },
+        { name: ".json" },
+        { name: ".html" },
+        { name: ".php" },
+        { name: ".sh" },
+        { name: ".py" },
+        { name: ".sql" },
+        { name: ".md" },
+      ],
     },
   ]);
 
@@ -39,9 +59,9 @@ const promptUserAndStoreConfig = async () => {
 };
 
 // Check if config exists and load it, or prompt the user for config
-const existingConfig = loadExistingConfig();
+const { api_key, max_tokens, file_types } = loadExistingConfig();
 
-if (existingConfig?.api_key) {
+if (api_key && max_tokens && file_types) {
   console.log("🔑 Using existing configuration from .env.");
   reviewCode();
 } else {
