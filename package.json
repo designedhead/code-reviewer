@@ -1,6 +1,6 @@
 {
   "name": "@raff_mendes/code-reviewer",
-  "version": "1.7.2",
+  "version": "1.7.3",
   "description": "AI powered code reviewing",
   "main": "index.js",
   "scripts": {
