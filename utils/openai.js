@@ -20,7 +20,7 @@ async function fetchOpenAi(content) {
           {
             role: 'system',
             content:
-              'You are a senior Software enginner reviewing code and providing feedback on how to improve it and remove code smeels.',
+              'You are a senior Software enginner reviewing code and providing feedback on how to improve it and remove code smells.',
           },
           {
             role: 'user',
