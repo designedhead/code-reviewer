@@ -43,7 +43,7 @@ This package is distributed under the MIT License.
 Contributions to this project are welcome. If you find any issues or have suggestions for improvement, please open an issue or submit a pull request on the GitHub repository.
 
 #### Credits
-The code reviewer is developed and maintained by [Your Name] and contributors. Special thanks to OpenAI for providing the language model that powers the code reviewer.
+The code reviewer is developed and maintained by Rafael Mendes and contributors. Special thanks to OpenAI for providing the language model that powers the code reviewer.
 
 #### Contact
 For any inquiries or feedback, please contact mrrafaelmendes@gmail.com
